@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useRef } from 'react';
 import './App.css';
 
+
+
+
+
+
 function App() {
+
+  const scrollToWarning = () => {
+    warnRef.current?.scrollIntoView();
+  }
+
+  const warnRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="warning" ref={warnRef}>
+        Mi Alerta!!!
+      </div>
+      <div style={{width:'100%', height:'900px', backgroundColor: '#c4c4c4'}}></div>
+      <div onClick={()=>{scrollToWarning()}}>My Div</div>
     </div>
   );
 }
